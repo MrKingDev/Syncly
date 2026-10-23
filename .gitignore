@@ -1,0 +1,76 @@
+
+# =========================
+# Dependencies
+# =========================
+node_modules/
+.pnp
+.pnp.*
+.pnpm-store/
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# =========================
+# Next.js / Frontend
+# =========================
+.next/
+out/
+build/
+dist/
+.turbo/
+.vercel/
+
+# =========================
+# Testing
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# =========================
+# Databases / Local Data
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+next-env.d.ts
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Miscellaneous
+# =========================
+.DS_Store
+Thumbs.db
+*.pem
+*.key
+
+# =========================
+# Editor / IDE
+# =========================
+.idea/
+*.swp
+*.swo
