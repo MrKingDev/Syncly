@@ -20,11 +20,6 @@ export default async function DashboardPage() {
 
   return (
     <main>
-
-
-      {/* Dashboard Content */}
-      <h1>Dashboard</h1>
-      
       <div>
         <h2>Good to see you, {session.user.name} </h2>
         <Button className="py-6"><Plus/>{"Create Workspace"}</Button>
