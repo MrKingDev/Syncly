@@ -1,6 +1,6 @@
 
 import AppSidebar from "@/components/nav/app-sidebar";
-import { SiteHeader } from "@/components/nav/site-header";
+import { SiteHeader } from "@/components/site-header";
 
 
 import {

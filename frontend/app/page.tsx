@@ -1,7 +1,9 @@
+import HalftoneBackgroundProps from "@/components/kokonutui/halftone-background"
+
 export default function Page() {
   return (
     <>
-      <h1>Hello FN</h1>
+      <HalftoneBackgroundProps />
     </>
   )
 }

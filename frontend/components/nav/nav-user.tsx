@@ -8,7 +8,6 @@ import {
   ChevronsUpDown,
   LogOut,
   Settings,
-  Sparkles,
 } from "lucide-react"
 
 import {
