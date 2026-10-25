@@ -12,7 +12,6 @@
 
 import { type ReactNode, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import Hero from "@/components/hero-page";
 
 export interface HalftoneBackgroundProps {
   className?: string;
@@ -481,22 +480,34 @@ export default function HalftoneBackground({
   }, [src, cell, angle, loupe]);
 
   return (
+  <div
+    ref={rootRef}
+    className={cn(
+      "relative isolate h-screen w-full overflow-hidden bg-muted text-muted-foreground",
+      className
+    )}
+  >
+    {/* Halftone ink color */}
+    <span
+      ref={inkRef}
+      className="hidden text-muted-foreground dark:text-muted-foreground"
+    />
+
+    {/* BACKGROUND LAYER */}
     <div
-      className={cn(
-        "@container relative flex min-h-[560px] w-full touch-pan-y items-center overflow-hidden bg-muted text-muted-foreground dark:bg-muted dark:text-muted-foreground",
-        className
-      )}
-      ref={rootRef}
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 z-0"
     >
-      {/* Ink color for the canvas, so the dots follow the theme. */}
-      <span className="hidden text-muted-foreground dark:text-muted-foreground" ref={inkRef} />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <canvas
-          className="h-full w-full opacity-0 transition-opacity duration-300 ease-out"
-          ref={canvasRef}
-        />
-      </div>
-      {children === undefined ? <Hero /> : children}
+      <canvas
+        ref={canvasRef}
+        className="h-full w-full opacity-0 transition-opacity duration-300 ease-out"
+      />
     </div>
-  );
+
+    {/* CONTENT LAYER */}
+    <div className="absolute inset-0 z-10 overflow-y-auto">
+      {children}
+    </div>
+  </div>
+);
 }

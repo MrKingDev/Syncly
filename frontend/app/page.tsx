@@ -1,9 +1,9 @@
-import HalftoneBackgroundProps from "@/components/kokonutui/halftone-background"
+import Hero from "@/components/hero-page";
 
 export default function Page() {
   return (
     <>
-      <HalftoneBackgroundProps />
+      <Hero />
     </>
   )
 }

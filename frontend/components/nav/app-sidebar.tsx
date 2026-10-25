@@ -29,16 +29,19 @@ const data = {
     {
       name: "Acme Inc",
       logo: GalleryVerticalEnd,
+      color: "#16A34A",
       plan: "Enterprise",
     },
     {
       name: "Acme Corp.",
       logo: AudioWaveform,
+      color: "#3B82F6",
       plan: "Startup",
     },
     {
       name: "Evil Corp.",
       logo: Command,
+      color: "#EF4444",
       plan: "Free",
     },
   ],
@@ -92,13 +95,14 @@ export default async function AppSidebar({ ...props }: React.ComponentProps<type
       {/* Header */}
        <SidebarHeader className="gap-3">
   {/* Logo */}
-  <Link
+<Link
   href="/dashboard"
   className="
-    flex w-full flex-row flex-nowrap items-center
-    justify-start gap-2 overflow-hidden
+    flex w-full min-w-0 flex-nowrap items-center
+    justify-start gap-2
     rounded-lg px-2 py-1
     transition-[gap,padding] duration-300 ease-in-out
+    group-data-[collapsible=icon]:justify-center
     group-data-[collapsible=icon]:gap-0
     group-data-[collapsible=icon]:px-0
   "
@@ -113,18 +117,26 @@ export default async function AppSidebar({ ...props }: React.ComponentProps<type
     <Orbit className="size-5" strokeWidth={2.4} />
   </span>
 
-  {/* Logo Text */}
+  {/* Logo Text Container */}
   <span
     className="
-      block max-w-40 min-w-0 overflow-hidden
-      whitespace-nowrap text-xl font-semibold
-      leading-none tracking-tight opacity-100
+      block min-w-0 max-w-40 overflow-hidden
+      opacity-100
       transition-[max-width,opacity] duration-300 ease-in-out
       group-data-[collapsible=icon]:max-w-0
       group-data-[collapsible=icon]:opacity-0
     "
   >
-    Syncly<span className="text-primary">.</span>
+    {/* Actual Logo Text */}
+    <span
+      className="
+        inline-block whitespace-nowrap
+        py-0.5 text-xl font-semibold
+        leading-normal tracking-tight
+      "
+    >
+      Syncly<span className="text-primary">.</span>
+    </span>
   </span>
 </Link>
 

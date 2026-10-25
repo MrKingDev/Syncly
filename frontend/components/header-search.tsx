@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Field } from "@/components/ui/field"
+import { Kbd } from "@/components/ui/kbd"
 import {
   InputGroup,
   InputGroupAddon,
@@ -10,17 +8,15 @@ import { SearchIcon } from "lucide-react"
 
 const HeaderSearch = () => {
   return (
-    <Field className="max-w-sm">
-      <ButtonGroup>
-        <InputGroup>
-        <InputGroupInput id="inline-start-input" placeholder="Search..." />
-        <InputGroupAddon align="inline-start">
-          <SearchIcon className="text-muted-foreground" />
-        </InputGroupAddon>
-      </InputGroup>
-        <Button>Search</Button>
-      </ButtonGroup>
-    </Field>
+      <InputGroup className="max-w-sm">
+      <InputGroupInput placeholder="Search..." />
+      <InputGroupAddon>
+        <SearchIcon className="text-muted-foreground" />
+      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">
+        <Kbd>Ctrl K</Kbd>
+      </InputGroupAddon>
+    </InputGroup>
   )
 }
 

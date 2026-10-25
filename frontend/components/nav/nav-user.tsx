@@ -123,7 +123,7 @@ export function NavUser({
 
             {/* Account Settings */}
             <DropdownMenuGroup>
-              <DropdownMenuItem textValue="Settings">
+              <DropdownMenuItem textValue="Settings" href="/settings">
                 <Settings/>
                 Settings
               </DropdownMenuItem>

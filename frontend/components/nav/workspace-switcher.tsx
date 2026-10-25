@@ -29,6 +29,7 @@ import {
 type Workspace = {
   name: string
   logo: ReactNode
+  color: string
   plan: string
 }
 
@@ -58,7 +59,8 @@ export function WorkspaceSwitcher({
             className="flex w-full flex-row items-center gap-2 data-pressed:bg-sidebar-accent data-pressed:text-sidebar-accent-foreground"
           >
             {/* Active Workspace Logo */}
-            <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground [&>svg]:size-4">
+            <div className="flex aspect-square size-8 shrink-0 items-center justify-center rounded-lg text-white [&>svg]:size-4"
+  style={{ backgroundColor: activeTeam.color }}>
               {activeTeam.logo}
             </div>
 
@@ -95,7 +97,8 @@ export function WorkspaceSwitcher({
                   onAction={() => setActiveIndex(index)}
                   className="gap-2 p-2"
                 >
-                  <div className="flex size-6 shrink-0 items-center justify-center rounded-md border [&>svg]:size-3.5">
+                  <div className="flex size-6 shrink-0 items-center justify-center rounded-md border [&>svg]:size-3.5"
+    style={{ backgroundColor: team.color }}>
                     {team.logo}
                   </div>
 
