@@ -1,4 +1,3 @@
-
 import type * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "@wrksz/themes/next"
 import { ThemeHotkey } from "@/components/theme-hotkey"
@@ -12,7 +11,7 @@ function ThemeProvider({
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
+      disableTransitionOnChange="background-color 0s, color 0s, border-color 0s"
       {...props}
     >
       <ThemeHotkey />
