@@ -61,6 +61,11 @@ export function NavUser({
     router.refresh();
   }
 
+  async function handleSettings() {
+    router.replace("/settings");
+    router.refresh();
+  }
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -123,7 +128,7 @@ export function NavUser({
 
             {/* Account Settings */}
             <DropdownMenuGroup>
-              <DropdownMenuItem textValue="Settings" href="/settings">
+              <DropdownMenuItem textValue="Settings" onClick={handleSettings}>
                 <Settings/>
                 Settings
               </DropdownMenuItem>

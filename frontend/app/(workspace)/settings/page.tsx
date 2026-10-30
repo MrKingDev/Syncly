@@ -1,11 +1,9 @@
-import React from 'react'
 import { PageTransition } from "@/components/page-transition"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const Settings = () => {
   return (
     <PageTransition>
-      <>
         <h1 className="text-center text-2xl font-bold">Settings</h1>
 
         {/* Theme */}
@@ -13,7 +11,6 @@ const Settings = () => {
           <h2 className="text-lg font-semibold">Theme</h2>
           <ThemeToggle />
         </section>
-      </>
     </PageTransition>
 
   )

@@ -11,7 +11,7 @@ function ThemeProvider({
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange="background-color 0s, color 0s, border-color 0s"
+      
       {...props}
     >
       <ThemeHotkey />
