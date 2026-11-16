@@ -12,6 +12,7 @@ import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
 import {
   Label,
   PolarGrid,
+  PolarAngleAxis,
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
@@ -25,11 +26,11 @@ const PriorityBreakdown = [
 ]
 
 const chartData = [
-  { browser: "safari", progress: 33, fill: "var(--color-safari)" },
+  { browser: "safari", visitors: 50, fill: "var(--color-safari)" },
 ]
 const chartConfig = {
-  progress: {
-    label: "Progress",
+  visitors: {
+    label: "Visitors",
   },
   safari: {
     label: "Safari",
@@ -51,12 +52,12 @@ const DashboardProgress = () => {
         {/* Progress Chart */}
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square h-62.5 w-full max-w-62.5"
+          className="mx-auto aspect-square max-h-[250px]"
         >
           <RadialBarChart
             data={chartData}
             startAngle={0}
-            endAngle={250}
+            endAngle={360}
             outerRadius={90}
             innerRadius={80}
           >
@@ -67,9 +68,13 @@ const DashboardProgress = () => {
               className="first:fill-muted last:fill-background"
               polarRadius={[90, 80]}
             />
-
-            <RadialBar dataKey="progress" background cornerRadius={10} />
-
+            <PolarAngleAxis
+              type="number"
+              domain={[0, 100]}
+              dataKey="visitors"
+              tick={false}
+            />
+            <RadialBar dataKey="visitors" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
               <Label
                 content={({ viewBox }) => {
@@ -86,20 +91,18 @@ const DashboardProgress = () => {
                           y={viewBox.cy}
                           className="fill-foreground text-4xl font-bold"
                         >
-                          {chartData[0].progress.toLocaleString()}%
+                          {chartData[0].visitors.toLocaleString()}%
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground text-xs"
+                          className="fill-muted-foreground"
                         >
                           Completed
                         </tspan>
                       </text>
                     )
                   }
-
-                  return null
                 }}
               />
             </PolarRadiusAxis>
