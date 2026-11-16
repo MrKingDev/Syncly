@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button"
 
 // Components
 import DashboardCards from "@/components/dashboard/dashboard-cards"
+import DashboardProgress from "@/components/dashboard/dashboard-progress"
+import WorkspaceTimeline from "@/components/dashboard/workspace-timeline"
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -23,7 +25,7 @@ export default async function DashboardPage() {
 
   return (
     <PageTransition>
-      <main>
+      <main className="flex-1 space-y-4 p-8 pt-6">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <h1 className="text-4xl font-bold">
@@ -46,20 +48,6 @@ export default async function DashboardPage() {
           <div>Place Project Cards</div>
         </section>
 
-        <aside>
-          {/* Progress */}
-          <section>
-            <h2 className="text-2xl font-semibold">Work at a glance</h2>
-            <div>Place Progress Info</div>
-          </section>
-
-          {/* Timeline */}
-          <section>
-            <h2 className="text-2xl font-semibold">Around the workspace</h2>
-            <div>Place Timeline Info</div>
-          </section>
-        </aside>
-
         {/* Task List */}
         <section>
           <h2 className="text-2xl font-semibold">Recently updated tasks</h2>
@@ -72,6 +60,18 @@ export default async function DashboardPage() {
           <div>Place Document List</div>
         </section>
       </main>
+
+      <aside className="ml-4 flex w-80 flex-col gap-4">
+        {/* Progress */}
+        <section>
+          <DashboardProgress />
+        </section>
+
+        {/* Timeline */}
+        <section>
+          <WorkspaceTimeline />
+        </section>
+      </aside>
     </PageTransition>
   )
 }
