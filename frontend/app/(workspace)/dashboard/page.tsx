@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import { PageTransition } from "@/components/page-transition"
 
 // Icons
-import { Plus } from "lucide-react"
+import { Plus, ArrowUpRight } from "lucide-react"
 
 // UI
 import { Button } from "@/components/ui/button"
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import DashboardCards from "@/components/dashboard/dashboard-cards"
 import DashboardProgress from "@/components/dashboard/dashboard-progress"
 import WorkspaceTimeline from "@/components/dashboard/workspace-timeline"
+import DashboardProjects from "@/components/dashboard/dashboard-projects"
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -44,19 +45,34 @@ export default async function DashboardPage() {
 
         {/* Projects */}
         <section>
-          <h2 className="text-2xl font-semibold">Projects in Motion</h2>
-          <div>Place Project Cards</div>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-2xl font-semibold">Projects in Motion</h2>
+            <Button variant="link" className="ml-auto px-0">
+              View All <ArrowUpRight />
+            </Button>
+          </div>
+          <DashboardProjects />
         </section>
 
         {/* Task List */}
         <section>
-          <h2 className="text-2xl font-semibold">Recently updated tasks</h2>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-2xl font-semibold">Recently updated tasks</h2>
+            <Button variant="link" className="ml-auto px-0">
+              View All <ArrowUpRight />
+            </Button>
+          </div>
           <div>Place Task List</div>
         </section>
 
         {/* Documents */}
         <section>
-          <h2 className="text-2xl font-semibold">Documents</h2>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-2xl font-semibold">Documents</h2>
+            <Button variant="link" className="ml-auto px-0">
+              View All <ArrowUpRight />
+            </Button>
+          </div>
           <div>Place Document List</div>
         </section>
       </main>

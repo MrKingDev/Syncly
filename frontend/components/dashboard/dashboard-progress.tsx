@@ -127,7 +127,7 @@ const DashboardProgress = () => {
                 <span className="text-muted-foreground">{label}</span>
               </div>
 
-              <span className="font-semibold tabular-nums">{value}</span>
+              <span className="tabular-nums">{value}</span>
             </div>
           ))}
         </div>
@@ -146,7 +146,7 @@ const DashboardProgress = () => {
               className="flex w-full items-center justify-between gap-4 text-sm"
             >
               <p className="text-muted-foreground">{label}</p>
-              <p className="font-semibold tabular-nums">{value}</p>
+              <p className="tabular-nums">{value}</p>
             </div>
           ))}
         </div>

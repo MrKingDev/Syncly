@@ -10,13 +10,19 @@ const timelineData = [
     user: "Jane Smith",
     action: "updated a task",
     description: "Jane updated the status of the design task.",
-    timestamp: "2024-06-01 11:30 AM",
+    timestamp: "Oct. 21, 10:00 PM EST",
   },
   {
     user: "Alice Johnson",
     action: "commented on a task",
     description: "Alice left a comment on the development task.",
-    timestamp: "2024-06-01 12:00 PM",
+    timestamp: "Oct. 20, 12:00 AM EST",
+  },
+  {
+    user: "Obaloluwa Adeyemi",
+    action: "commented on a task",
+    description: "Obaloluwa left a comment on the development task.",
+    timestamp: "Oct. 19, 4:50 AM EST",
   },
 ]
 const WorkspaceTimeline = () => {
@@ -26,30 +32,40 @@ const WorkspaceTimeline = () => {
         <CardTitle>Around the Workspace</CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Timeline content goes here */}
-
         <div className="flex flex-col">
           {timelineData.map(
             ({ user, action, description, timestamp }, index) => {
               const isFirst = index === 0
               const isLast = index === timelineData.length - 1
 
+              // Newest = bright red, oldest = dark red
+              const ageProgress = index / Math.max(timelineData.length - 1, 1)
+
+              const lightness = 50 - ageProgress * 30
+
+              const circleColor = `hsl(0 80% ${lightness}%)`
+
               return (
                 <div key={index} className="flex items-stretch gap-4">
                   {/* Timeline Indicator */}
                   <div className="relative w-3 shrink-0">
-                    {/* Line above dot */}
+                    {/* Connecting Line Above */}
                     {!isFirst && (
                       <span className="absolute top-0 left-1/2 h-[10px] w-px -translate-x-1/2 bg-border" />
                     )}
 
-                    {/* Line below dot */}
+                    {/* Connecting Line Below */}
                     {!isLast && (
                       <span className="absolute top-[10px] bottom-0 left-1/2 w-px -translate-x-1/2 bg-border" />
                     )}
 
-                    {/* Timeline Dot */}
-                    <span className="absolute top-[5px] left-1/2 z-10 size-2.5 -translate-x-1/2 rounded-full border-2 border-red-600 bg-card" />
+                    {/* Circle */}
+                    <span
+                      className="absolute top-[5px] left-1/2 z-10 size-2.5 -translate-x-1/2 rounded-full border-2 bg-card transition-colors duration-300"
+                      style={{
+                        borderColor: circleColor,
+                      }}
+                    />
                   </div>
 
                   {/* Timeline Content */}
