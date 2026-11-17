@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { PageTransition } from "@/components/page-transition"
+import Link from "next/link"
 
 // Icons
 import { Plus, ArrowUpRight } from "lucide-react"
@@ -47,9 +48,11 @@ export default async function DashboardPage() {
         <section>
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-2xl font-semibold">Projects in Motion</h2>
-            <Button variant="link" className="ml-auto px-0">
-              View All <ArrowUpRight />
-            </Button>
+            <Link href="/projects" className="ml-auto px-0">
+              <Button variant="link">
+                View All <ArrowUpRight />
+              </Button>
+            </Link>
           </div>
           <DashboardProjects />
         </section>

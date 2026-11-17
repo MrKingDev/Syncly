@@ -22,8 +22,7 @@ const projectData = [
     statusTheme: "default",
     tasksCompleted: 2,
     totalTasks: 4,
-    progress: 50,
-    targetDate: "No Target Date",
+    targetDate: null,
   },
   {
     id: 2,
@@ -33,8 +32,7 @@ const projectData = [
     statusTheme: "outline",
     tasksCompleted: 1,
     totalTasks: 3,
-    progress: 33,
-    targetDate: "July 23rd, 2026 12:00 PM",
+    targetDate: "2023-12-31",
   },
   {
     id: 3,
@@ -44,57 +42,67 @@ const projectData = [
     statusTheme: "default",
     tasksCompleted: 2,
     totalTasks: 3,
-    progress: 67,
-    targetDate: "No Target Date",
+    targetDate: null,
   },
 ]
 
 const DashboardProjects = () => {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
-      {projectData.map((project) => (
-        <Link href={`/projects/${project.id}`} key={project.id}>
-          <Card className="border transition-all duration-300 hover:-translate-y-2 hover:border-primary">
-            <CardHeader>
-              <CardTitle>{project.title}</CardTitle>
+      {projectData.map((project) => {
+        const progress =
+          project.totalTasks > 0
+            ? Math.round((project.tasksCompleted / project.totalTasks) * 100)
+            : 0
 
-              <CardDescription className="text-sm text-muted-foreground">
-                {project.description}
-              </CardDescription>
+        return (
+          <Link href={"#"} key={project.id} className="block">
+            <Card className="h-full border transition-all duration-300 hover:-translate-y-2 hover:border-primary">
+              <CardHeader>
+                <CardTitle>{project.title}</CardTitle>
 
-              <CardAction>
-                <Badge variant={project.statusTheme}>{project.status}</Badge>
-              </CardAction>
-            </CardHeader>
+                <CardDescription className="text-sm text-muted-foreground">
+                  {project.description}
+                </CardDescription>
 
-            <CardContent>
-              <div className="flex items-center justify-between">
-                <Label className="text-sm text-muted-foreground">
-                  {project.tasksCompleted} out of {project.totalTasks} tasks
-                  completed
-                </Label>
+                <CardAction>
+                  <Badge variant={project.statusTheme}>{project.status}</Badge>
+                </CardAction>
+              </CardHeader>
 
-                <p>{project.progress}%</p>
-              </div>
+              <CardContent>
+                <div className="flex items-center justify-between gap-2">
+                  <Label className="text-sm text-muted-foreground">
+                    {project.tasksCompleted} out of {project.totalTasks} tasks
+                    completed
+                  </Label>
 
-              <Progress
-                className="mt-2"
-                aria-label={`${project.title} progress`}
-                value={project.progress}
-              />
+                  <p className="text-sm font-medium">{progress}%</p>
+                </div>
 
-              <div className="mt-4 flex items-center justify-between">
-                <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="size-4" />
-                  {project.targetDate}
-                </p>
+                <Progress
+                  className="mt-2"
+                  aria-label={`${project.title} progress`}
+                  value={progress}
+                />
 
-                <ArrowUpRight className="size-4 text-muted-foreground" />
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                    <Clock className="size-4" />
+                    {project.targetDate
+                      ? new Date(
+                          `${project.targetDate}T00:00:00`
+                        ).toLocaleDateString()
+                      : "No Target Date"}
+                  </p>
+
+                  <ArrowUpRight className="size-4 text-muted-foreground" />
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        )
+      })}
     </div>
   )
 }
