@@ -16,6 +16,7 @@ import DashboardProgress from "@/components/dashboard/dashboard-progress"
 import WorkspaceTimeline from "@/components/dashboard/workspace-timeline"
 import DashboardProjects from "@/components/dashboard/dashboard-projects"
 import DashboardDocs from "@/components/dashboard/dashboard-docs"
+import DashboardTasks from "@/components/dashboard/dashboard-tasks"
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -77,7 +78,7 @@ export default async function DashboardPage() {
                 </Button>
               </div>
 
-              <div>Place Task List</div>
+              <DashboardTasks />
             </section>
 
             {/* Documents */}
